@@ -128,7 +128,9 @@ function findHandler(events, callable, delegationSelector = null) {
 
 function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
   const isDelegated = typeof handler === 'string'
-  const originalHandler = isDelegated ? delegationFunction : handler
+  const originalHandler = isDelegated ?
+    delegationFunction :
+    (handler || delegationFunction) // todo: tooltip passes `false` instead of selector, so we need to check
   let typeEvent = getTypeEvent(originalTypeEvent)
 
   if (!nativeEvents.has(typeEvent)) {
