@@ -145,7 +145,6 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
 
   let [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
 
-
   // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
   // this prevents the handler from being dispatched the same way as mouseover or mouseout does
   if (customEventsRegex.test(originalTypeEvent)) {
@@ -284,7 +283,6 @@ const EventHandler = {
     let evt = new Event(event, { bubbles, cancelable: true })
     evt = hydrateObj(evt, args)
 
-
     if (defaultPrevented) {
       evt.preventDefault()
     }
@@ -313,6 +311,7 @@ function hydrateObj(obj, meta) {
       })
     }
   }
+
   return obj
 }
 
